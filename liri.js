@@ -15,18 +15,18 @@ inquirer.prompt ([
     }
 ])
 .then(function(answers) {
-   
-    if(answers.choices = "concert-this") {
+   console.log(answers.options);
+    if(answers.options === "concert-this") {
         concertThis();
-    } else if (answers.choices = "spotify-this-song") {
+    } else if (answers.options === "spotify-this-song") {
         spotifyThis();
-    } else if (answers.choices = "movie-this") {
+    } else if (answers.options === "movie-this") {
         movieThis();
     } else {
-        console.log("WTF")
+        quit(); 
     };
     
-})
+});
 }
 //concert-this function
 function concertThis() {
@@ -50,7 +50,7 @@ function concertThis() {
  });
  })}
 
-function spotifyThis(response){
+function spotifyThis(){
     inquirer.prompt ([
         {
             type: "input",
@@ -70,6 +70,7 @@ function spotifyThis(response){
             console.log("Preview Link: " + response.tracks.items[0].preview_url);
             console.log("Album: " + response.tracks.items[0].album.name);
             console.log("------------------------");
+            beginning();
         });
 })};
 
@@ -95,6 +96,11 @@ function movieThis(){
         console.log("Actors: " + response.data.Actors);
         console.log("Plot: " + response.data.Plot);
         console.log("------------------------");
+        beginning();
     })
 })};
+
+function quit() {
+    console.log("Goodbye");
+}
 beginning();
